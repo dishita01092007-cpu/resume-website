@@ -1,40 +1,130 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Resume</title>
+    <title>Dishita Agarwal</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
-    <h2>My Resume</h2>
+    <h2 onclick="showSection('home')">Dishita Agarwal</h2>
     <div>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <button onclick="showSection('resume')">Resume</button>
+        <button onclick="showSection('personal')">Personal</button>
+        <button onclick="showSection('education')">Education</button>
+        <button onclick="showSection('interest')">Interests</button>
+        <button onclick="showSection('achievements')">Achievements</button>
+        <button onclick="showSection('experience')">Experience</button>
+        <button onclick="showSection('contact')">Contact</button>
     </div>
 </div>
 
-<section id="about">
-    <h1>Your Name</h1>
-    <p>I am a BBA student interested in marketing.</p>
-</section>
-
-<section id="skills">
-    <h2>My Skills</h2>
-    <div class="card-container">
-        <div class="card">Marketing</div>
-        <div class="card">Communication</div>
-        <div class="card">Finance</div>
+<!-- HERO SECTION -->
+<section id="home" class="section active">
+    <div class="hero">
+        <img src="https://via.placeholder.com/120" class="profile">
+        <h1>Dishita Agarwal</h1>
+        <p>BBA Student | Finance Enthusiast | Creative Thinker</p>
     </div>
 </section>
 
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: yourname@email.com</p>
+<!-- RESUME -->
+<section id="resume" class="section">
+    <div class="card">
+        <h2>My Resume</h2>
+        <a href="resume.pdf" target="_blank">View Resume</a>
+    </div>
 </section>
+
+<!-- PERSONAL -->
+<section id="personal" class="section">
+    <div class="card">
+        <h2>Personal Details</h2>
+        <p><b>Name:</b> Dishita Agarwal</p>
+        <p><b>Place of Birth:</b> Jaipur</p>
+        <p><b>IIM Roll Number:</b> 25120335</p>
+        <p><b>Personality:</b> Good communicator, creative, loves movies, good at painting</p>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+    <div class="card">
+        <h2>Education</h2>
+        <p>IIM Bangalore</p>
+        <p>Christ University</p>
+        <p>Dharav High School, Jaipur</p>
+    </div>
+</section>
+
+<!-- INTEREST -->
+<section id="interest" class="section">
+    <div class="card">
+        <h2>Areas of Interest</h2>
+        <p>Finance | Painting | Music | Guesstimates | Learning</p>
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="section">
+    <div class="card">
+        <h2>Achievements</h2>
+        <ul>
+            <li>Ranked 4th nationally – TGELF Trade Challenge</li>
+            <li>Best Delegate & MUN Awards</li>
+            <li>Picasso Award of Excellence</li>
+            <li>2nd Place – RIEDU Painting Contest</li>
+            <li>Brainvita Abacus Rank Holder</li>
+            <li>Samsung Solve for Tomorrow Participant</li>
+            <li>State-level Painting Qualifier</li>
+            <li>Khula Aasmaan Exhibitor</li>
+            <li>1st Prize – Shark Pals Competition</li>
+        </ul>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+    <div class="card">
+        <h2>Experience</h2>
+
+        <p><b>A-Quant</b> – Financial Research Analyst</p>
+        <p>Research on companies and industry trends</p>
+
+        <p><b>Team Sponsorship</b> – Working Committee</p>
+        <p>Handled sponsorship coordination</p>
+
+        <p><b>Finometricss</b> – Design Team</p>
+        <p>Worked on university magazine</p>
+
+        <p><b>Arogya Foundation</b> – Intern</p>
+        <p>Community engagement and planning</p>
+
+        <p><b>Student Council</b> – House Captain</p>
+        <p>Leadership and team management</p>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <div class="card">
+        <h2>Contact Me</h2>
+        <p><b>Phone:</b> 7014326632</p>
+        <p><b>Email:</b> dishita.agarwal25@iimb.ac.in</p>
+    </div>
+</section>
+
+<script>
+function showSection(id) {
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
