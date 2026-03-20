@@ -21,6 +21,7 @@
         <button onclick="showSection('experience')">Experience</button>
         <button onclick="showSection('achievements')">Achievements</button>
         <button onclick="showSection('contact')">Contact</button>
+        <button onclick="toggleMode()">🌙 Mode</button>
     </div>
 </div>
 
@@ -29,6 +30,13 @@
     <img src="profile.jpg" class="profile">
     <h1 class="glow">Dishita Agarwal</h1>
     <p>BBA Student | Finance Enthusiast</p>
+
+    <p class="intro">
+        My name is Dishita Agarwal, and I am a student of the Bachelor of Business Administration (BBA) program. I am from Jaipur
+        and have a commerce background with a solid foundation in business, economics, and management. I possess a strong work
+        ethic, a keen eye for detail, and effective communication and analytical skills. I am presently eagerly waiting to apply my
+        knowledge in a corporate environment and be proactive in contributing to the world meaningfully.
+    </p>
 </section>
 
 <!-- RESUME -->
@@ -135,6 +143,10 @@ function showSection(id) {
     let current = document.getElementById(id);
     current.classList.add('active');
     setTimeout(() => current.classList.add('fade-in'), 50);
+}
+
+function toggleMode() {
+    document.body.classList.toggle("light-mode");
 }
 </script>
 

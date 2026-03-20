@@ -59,11 +59,20 @@ body {
     box-shadow: 0 0 20px red;
 }
 
-/* NAME GLOW */
+/* NAME */
 .glow {
     font-size: 40px;
     color: red;
     text-shadow: 0 0 10px red, 0 0 20px red;
+}
+
+/* INTRO */
+.intro {
+    margin-top: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }
 
 /* HEADINGS */
@@ -113,10 +122,39 @@ a {
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    transition: 0.3s;
 }
 
 a:hover {
     background: white;
     color: black;
+}
+
+/* LIGHT MODE */
+.light-mode {
+    background: white;
+    color: black;
+}
+
+.light-mode .navbar {
+    background: #ff4d4d;
+}
+
+.light-mode .card,
+.light-mode .edu-card {
+    background: #f2f2f2;
+    color: black;
+}
+
+.light-mode a {
+    background: black;
+    color: white;
+}
+
+.light-mode .heading {
+    color: #8B0000;
+}
+
+.light-mode .glow {
+    color: black;
+    text-shadow: none;
 }
