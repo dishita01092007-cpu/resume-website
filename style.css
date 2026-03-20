@@ -11,22 +11,19 @@ body {
     justify-content: space-between;
     padding: 20px 40px;
     background: #8B0000;
-    box-shadow: 0 0 20px red;
 }
 
 .navbar button {
     background: none;
     border: none;
     color: white;
-    margin-left: 15px;
+    margin-left: 10px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.navbar button:hover {
-    color: black;
+.active-btn {
     background: white;
-    padding: 5px 10px;
+    color: black;
     border-radius: 5px;
 }
 
@@ -41,37 +38,38 @@ body {
     display: block;
 }
 
-/* ANIMATION */
-.fade-in {
-    animation: fade 0.6s ease-in;
+/* GRID */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-@keyframes fade {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+.full {
+    width: 100%;
 }
 
 /* PROFILE */
 .profile {
-    width: 150px;
+    width: 140px;
     border-radius: 50%;
-    border: 3px solid red;
-    box-shadow: 0 0 20px red;
 }
 
-/* NAME */
+/* TEXT */
 .glow {
-    font-size: 40px;
+    font-size: 36px;
     color: red;
-    text-shadow: 0 0 10px red, 0 0 20px red;
 }
 
-/* INTRO */
+.tagline {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
 .intro {
-    margin-top: 20px;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
     line-height: 1.6;
 }
 
@@ -81,52 +79,30 @@ body {
     color: red;
 }
 
-/* EDUCATION */
-.edu-card {
+/* CARDS */
+.card, .edu-card {
     background: #111;
     padding: 20px;
-    margin: 15px auto;
     border-radius: 10px;
     width: 260px;
     transition: 0.3s;
 }
 
-.edu-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px red;
+.card:hover, .edu-card:hover {
+    transform: translateY(-5px);
 }
 
 .edu-card img {
-    width: 80px;
-}
-
-/* CARDS */
-.card {
-    background: #111;
-    padding: 15px;
-    margin: 10px auto;
-    width: 300px;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px red;
+    width: 70px;
 }
 
 /* LINKS */
 a {
-    padding: 10px 20px;
     background: red;
     color: white;
+    padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
-}
-
-a:hover {
-    background: white;
-    color: black;
 }
 
 /* LIGHT MODE */
@@ -141,20 +117,11 @@ a:hover {
 
 .light-mode .card,
 .light-mode .edu-card {
-    background: #f2f2f2;
+    background: #eee;
     color: black;
 }
 
 .light-mode a {
     background: black;
     color: white;
-}
-
-.light-mode .heading {
-    color: #8B0000;
-}
-
-.light-mode .glow {
-    color: black;
-    text-shadow: none;
 }
