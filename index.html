@@ -1,162 +1,651 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
-    <title>Dishita Agarwal</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Playfair+Display&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dishita Agarwal | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <h2 onclick="showSection('home')">Dishita Agarwal</h2>
-    <div>
-        <button onclick="showSection('home', event)">Home</button>
-        <button onclick="showSection('resume', event)">Resume</button>
-        <button onclick="showSection('education', event)">Education</button>
-        <button onclick="showSection('experience', event)">Experience</button>
-        <button onclick="showSection('achievements', event)">Achievements</button>
-        <button onclick="showSection('contact', event)">Contact</button>
-        <button onclick="toggleMode()">🌙</button>
-    </div>
+<!-- ── LOADER ─────────────────────────────────────────────── -->
+<div class="loader" id="loader">
+  <div class="loader-initials">
+    <span class="loader-d">D</span><span class="loader-a">A</span>
+  </div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
 </div>
 
-<!-- HOME -->
-<section id="home" class="section active fade-in">
-    <img src="profile.jpg" class="profile">
-    <h1 class="glow"><span id="typing"></span></h1>
+<!-- ── CURSOR ─────────────────────────────────────────────── -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <p class="tagline">Aspiring Business Leader | Finance Enthusiast | Creative Thinker</p>
+<!-- ── THEME TOGGLE ───────────────────────────────────────── -->
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+  <i class="fas fa-sun" id="themeIcon"></i>
+</button>
 
-    <p class="intro">
-        My name is Dishita Agarwal, and I am a student of the Bachelor of Business Administration (BBA) program. I am from Jaipur
-        and have a commerce background with a solid foundation in business, economics, and management. I possess a strong work
-        ethic, a keen eye for detail, and effective communication and analytical skills. I am presently eagerly waiting to apply my
-        knowledge in a corporate environment and be proactive in contributing to the world meaningfully.
-    </p>
+<!-- ── PARTICLES ──────────────────────────────────────────── -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- ── NAVBAR ────────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <div class="nav-initials">DA</div>
+    <div class="brand-text">
+      <span class="brand-main">Dishita Agarwal</span>
+      <span class="brand-sub">BBA · IIM Bangalore & Christ University</span>
+    </div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="nav-link">Home</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#experience" class="nav-link">Experience</a></li>
+    <li><a href="#education" class="nav-link">Education</a></li>
+    <li><a href="#achievements" class="nav-link">Achievements</a></li>
+    <li><a href="#resume" class="nav-link">Resume</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        IIM Bangalore · Christ University · Jaipur
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Dishita</span>
+        <span class="title-line accent">Agarwal</span>
+      </h1>
+      <div class="hero-roles">
+        <span class="role-static">I am a </span>
+        <span class="role-rotating" id="roleText">Management Student</span>
+        <span class="role-cursor">|</span>
+      </div>
+      <p class="hero-desc">
+        My name is Dishita Agarwal, and I am a student of the Bachelor of Business Administration (BBA) program. I am from Jaipur and have a commerce background with a solid foundation in business, economics, and management. I possess a strong work ethic, a keen eye for detail, and effective communication and analytical skills. I am presently eagerly waiting to apply my knowledge in a corporate environment and be proactive in contributing to the world meaningfully.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#experience" class="btn-primary">View Experience <i class="fas fa-arrow-right"></i></a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <div class="hero-image-ring"></div>
+      <div class="hero-image-ring-2"></div>
+      <div class="hero-image-container">
+        <img src="dishita.jpg" alt="Dishita Agarwal" class="hero-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="hero-photo-fallback">
+          <span>DA</span>
+        </div>
+      </div>
+      <div class="hero-image-badge-1"><i class="fas fa-graduation-cap"></i> IIM Bangalore</div>
+      <div class="hero-image-badge-2"><i class="fas fa-star"></i> 4th Nationally — FedEx</div>
+    </div>
+  </div>
+
+  <!-- Scrolling image strip -->
+  <div class="hero-image-strip">
+    <div class="image-track">
+      <div class="image-card img-card-1"><div class="img-inner"><i class="fas fa-chart-line"></i><span>Finance</span></div></div>
+      <div class="image-card img-card-2"><div class="img-inner"><i class="fas fa-palette"></i><span>Creative Arts</span></div></div>
+      <div class="image-card img-card-3"><div class="img-inner"><i class="fas fa-globe"></i><span>MUN</span></div></div>
+      <div class="image-card img-card-4"><div class="img-inner"><i class="fas fa-lightbulb"></i><span>Innovation</span></div></div>
+      <div class="image-card img-card-5"><div class="img-inner"><i class="fas fa-handshake"></i><span>Leadership</span></div></div>
+      <div class="image-card img-card-6"><div class="img-inner"><i class="fas fa-briefcase"></i><span>Business</span></div></div>
+      <div class="image-card img-card-1"><div class="img-inner"><i class="fas fa-chart-line"></i><span>Finance</span></div></div>
+      <div class="image-card img-card-2"><div class="img-inner"><i class="fas fa-palette"></i><span>Creative Arts</span></div></div>
+      <div class="image-card img-card-3"><div class="img-inner"><i class="fas fa-globe"></i><span>MUN</span></div></div>
+      <div class="image-card img-card-4"><div class="img-inner"><i class="fas fa-lightbulb"></i><span>Innovation</span></div></div>
+      <div class="image-card img-card-5"><div class="img-inner"><i class="fas fa-handshake"></i><span>Leadership</span></div></div>
+      <div class="image-card img-card-6"><div class="img-inner"><i class="fas fa-briefcase"></i><span>Business</span></div></div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span>Management Student</span><span class="sep">✦</span>
+      <span>Finance Enthusiast</span><span class="sep">✦</span>
+      <span>Creative Thinker</span><span class="sep">✦</span>
+      <span>MUN Champion</span><span class="sep">✦</span>
+      <span>Painter & Artist</span><span class="sep">✦</span>
+      <span>IIM Bangalore</span><span class="sep">✦</span>
+      <span>Christ University</span><span class="sep">✦</span>
+      <span>Future Leader</span><span class="sep">✦</span>
+      <span>Commerce Graduate</span><span class="sep">✦</span>
+      <span>Management Student</span><span class="sep">✦</span>
+      <span>Finance Enthusiast</span><span class="sep">✦</span>
+      <span>Creative Thinker</span><span class="sep">✦</span>
+      <span>MUN Champion</span><span class="sep">✦</span>
+      <span>Painter & Artist</span><span class="sep">✦</span>
+      <span>IIM Bangalore</span><span class="sep">✦</span>
+      <span>Christ University</span><span class="sep">✦</span>
+      <span>Future Leader</span><span class="sep">✦</span>
+      <span>Commerce Graduate</span><span class="sep">✦</span>
+    </div>
+  </div>
 </section>
 
-<!-- RESUME -->
-<section id="resume" class="section">
-    <h2 class="heading">Resume</h2>
-    <a href="resume.pdf" target="_blank">View My Resume</a>
+<!-- ── ABOUT ───────────────────────────────────────────────── -->
+<section class="about-section reveal-section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Who I Am</span>
+      <h2 class="section-title">A Driven Student &<br/><em>Aspiring Professional</em></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal-card" style="--delay:0s">
+        <div class="about-icon"><i class="fas fa-user-graduate"></i></div>
+        <h3>Student Leader</h3>
+        <p>Pursuing BBA in Digital Business and Entrepreneurship at IIM Bangalore and BBA at Christ University, Bangalore — building a strong academic and professional foundation.</p>
+      </div>
+      <div class="about-card reveal-card" style="--delay:0.1s">
+        <div class="about-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Finance & Research</h3>
+        <p>Experienced in financial research, market analysis, and corporate finance through internships and academic work. Passionate about data-driven decision making.</p>
+      </div>
+      <div class="about-card reveal-card" style="--delay:0.2s">
+        <div class="about-icon"><i class="fas fa-paint-brush"></i></div>
+        <h3>Creative & Artistic</h3>
+        <p>An award-winning painter and creative writer with a readership of 20,000+ through the Christ University magazine. Art and creativity fuel my thinking.</p>
+      </div>
+    </div>
+    <div class="skills-wrap reveal-card" style="--delay:0.3s">
+      <h3 class="skills-title">Skills</h3>
+      <div class="skills-row">
+        <span class="skill-pill"><i class="fas fa-comments"></i> Effective Communication</span>
+        <span class="skill-pill"><i class="fas fa-pen-nib"></i> Creative Writing</span>
+        <span class="skill-pill"><i class="fas fa-clock"></i> Time Management</span>
+        <span class="skill-pill"><i class="fab fa-canva"></i> Canva</span>
+        <span class="skill-pill"><i class="fas fa-file-excel"></i> MS Excel</span>
+        <span class="skill-pill"><i class="fas fa-file-powerpoint"></i> MS PowerPoint</span>
+        <span class="skill-pill"><i class="fas fa-microphone"></i> Debating</span>
+        <span class="skill-pill"><i class="fas fa-palette"></i> Painting & Drawing</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education" class="section grid">
-    <h2 class="heading full">Education</h2>
-
-    <div class="edu-card">
-        <img src="iim.png">
-        <p><b>IIM Bangalore</b></p>
-        <p>2025 - 2028</p>
+<!-- ── EXPERIENCE ─────────────────────────────────────────── -->
+<section class="experience-section reveal-section" id="experience">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Professional Journey</span>
+      <h2 class="section-title">My Experience &<br/><em>Roles</em></h2>
     </div>
+    <div class="timeline">
 
-    <div class="edu-card">
-        <img src="christ.png">
-        <p><b>Christ University</b></p>
-        <p>2025 - 2028</p>
-    </div>
+      <div class="timeline-item reveal-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">April – May 2025</div>
+        <div class="timeline-card">
+          <div class="timeline-icon"><i class="fas fa-university"></i></div>
+          <div class="timeline-content">
+            <h3>Finance Intern</h3>
+            <span class="timeline-org">AU Small Finance Bank</span>
+            <p>Working as a finance intern at AU Small Finance Bank, gaining hands-on experience in financial operations and banking processes.</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="edu-card">
-        <img src="school.png">
-        <p><b>Dharav High School, Jaipur</b></p>
-        <p>2021 - 2025</p>
+      <div class="timeline-item reveal-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025 – Present</div>
+        <div class="timeline-card">
+          <div class="timeline-icon"><i class="fas fa-search-dollar"></i></div>
+          <div class="timeline-content">
+            <h3>Financial Research Associate</h3>
+            <span class="timeline-org">A-Quant (Finometricss)</span>
+            <p>Conducting secondary research on companies and industry trends as a Financial Research Analyst, delivering insights to support investment and market decisions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025 – Present</div>
+        <div class="timeline-card">
+          <div class="timeline-icon"><i class="fas fa-handshake"></i></div>
+          <div class="timeline-content">
+            <h3>Working Committee Member</h3>
+            <span class="timeline-org">Team Sponsorship</span>
+            <p>Assisting in identifying, approaching, and coordinating with potential sponsors for institutional events, developing strong stakeholder management and outreach skills.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025 – Present</div>
+        <div class="timeline-card">
+          <div class="timeline-icon"><i class="fas fa-pen-fancy"></i></div>
+          <div class="timeline-content">
+            <h3>Design Team Member</h3>
+            <span class="timeline-org">Finometricss Magazine · Christ University</span>
+            <p>Contributing to the monthly university magazine with creative content and design, reaching a readership of 20,000+ across Christ University campuses.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">November – February 2025</div>
+        <div class="timeline-card">
+          <div class="timeline-icon"><i class="fas fa-leaf"></i></div>
+          <div class="timeline-content">
+            <h3>Intern</h3>
+            <span class="timeline-org">Arogya Foundation</span>
+            <p>Planned trips and visits, engaged with children and farmers as part of a social welfare and community development initiative.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal-card">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2021 – 2025</div>
+        <div class="timeline-card">
+          <div class="timeline-icon"><i class="fas fa-crown"></i></div>
+          <div class="timeline-content">
+            <h3>House Captain</h3>
+            <span class="timeline-org">School Student Council · Dharav High School</span>
+            <p>Served as the House Captain in the School Student Council, heading a team of students in academic and co-curricular activities and representing the student body.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="section">
-    <h2 class="heading">Experience</h2>
-
-    <div class="card">
-        <b>A-Quant (2025 - Present)</b>
-        <p>Financial Research Analyst</p>
-        <p>Conduct secondary research on companies and industry trends.</p>
+<!-- ── EDUCATION ───────────────────────────────────────────── -->
+<section class="education-section reveal-section" id="education">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Academic Background</span>
+      <h2 class="section-title">Education &<br/><em>Institutions</em></h2>
     </div>
+    <div class="edu-grid">
 
-    <div class="card">
-        <b>Team Sponsorship (2025 - Present)</b>
-        <p>Working Committee Member</p>
-        <p>Assisting in identifying and coordinating with sponsors.</p>
-    </div>
+      <div class="edu-card reveal-card" style="--delay:0s">
+        <div class="edu-logo-wrap">
+          <img src="iimb-logo.png" alt="IIM Bangalore" class="edu-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="edu-logo-fallback">IIMB</div>
+        </div>
+        <div class="edu-info">
+          <span class="edu-duration">2025 – 2028</span>
+          <h3>Indian Institute of Management, Bangalore</h3>
+          <span class="edu-degree">Bachelor of Business Administration (Digital Business & Entrepreneurship)</span>
+          <p>One of India's most prestigious management institutions, pursuing an integrated BBA programme focused on digital innovation and entrepreneurship.</p>
+        </div>
+      </div>
 
-    <div class="card">
-        <b>Finometricss (2025 - Present)</b>
-        <p>Design Team Member</p>
-        <p>Worked on university magazine for 20,000+ readers.</p>
-    </div>
+      <div class="edu-card reveal-card" style="--delay:0.1s">
+        <div class="edu-logo-wrap">
+          <img src="christ-logo.png" alt="Christ University" class="edu-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="edu-logo-fallback">CU</div>
+        </div>
+        <div class="edu-info">
+          <span class="edu-duration">2025 – 2028</span>
+          <h3>Christ University, Bangalore</h3>
+          <span class="edu-degree">Bachelor of Business Administration (BBA)</span>
+          <p>Pursuing a BBA at Christ University with a 1st semester GPA of 3.89, building strong foundations in management, finance, and business strategy.</p>
+        </div>
+      </div>
 
-    <div class="card">
-        <b>Arogya Foundation (Internship)</b>
-        <p>Nov - Feb 2025</p>
-        <p>Planned trips and engaged with children and farmers.</p>
-    </div>
+      <div class="edu-card reveal-card" style="--delay:0.2s">
+        <div class="edu-logo-wrap">
+          <img src="dharav-logo.png" alt="Dharav High School" class="edu-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="edu-logo-fallback">DHS</div>
+        </div>
+        <div class="edu-info">
+          <span class="edu-duration">2021 – 2025</span>
+          <h3>Dharav High School, Jaipur</h3>
+          <span class="edu-degree">Senior Secondary & Secondary School</span>
+          <p>Completed Class 12 (2025) with 93.6% and Class 10 (2023) with 91.17%. Commerce stream with distinction in business studies and economics.</p>
+        </div>
+      </div>
 
-    <div class="card">
-        <b>Student Council (2021-2025)</b>
-        <p>House Captain</p>
-        <p>Led student teams in academics and activities.</p>
+      <div class="edu-card reveal-card" style="--delay:0.3s">
+        <div class="edu-logo-wrap">
+          <img src="dps-logo.png" alt="Delhi Public School Jaipur" class="edu-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="edu-logo-fallback">DPS</div>
+        </div>
+        <div class="edu-info">
+          <span class="edu-duration">2011 – 2021</span>
+          <h3>Delhi Public School, Jaipur</h3>
+          <span class="edu-degree">Primary & Middle School</span>
+          <p>Completed foundational education at DPS Jaipur, participating in numerous academic, cultural, and co-curricular events that shaped a well-rounded personality.</p>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
-<section id="achievements" class="section grid">
-    <h2 class="heading full">Achievements</h2>
+<!-- ── ACHIEVEMENTS ────────────────────────────────────────── -->
+<section class="achievements-section reveal-section" id="achievements">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Honours & Awards</span>
+      <h2 class="section-title">Achievements &<br/><em>Recognition</em></h2>
+    </div>
+    <div class="achievements-grid">
 
-    <div class="card">Ranked 4th nationally – TGELF Trade Challenge by FedEx</div>
-    <div class="card">Best Delegate (4x), High Commendation, Special Mention – MUN</div>
-    <div class="card">Picasso Award – National Painting Contest</div>
-    <div class="card">2nd Place – RIEDU Painting Contest</div>
-    <div class="card">2nd Rank – Brainvita Abacus</div>
-    <div class="card">Participant – Solve for Tomorrow by Samsung</div>
-    <div class="card">State-level qualifier – Painting Competition</div>
-    <div class="card">High Commendation – Goonj Fest</div>
-    <div class="card">Exhibitor – Khula Aasmaan Competition</div>
-    <div class="card">Participant – Bharat Quiz</div>
-    <div class="card">1st Prize – Shark Pals</div>
+      <div class="achievement-card reveal-card gold-card">
+        <div class="ach-icon"><i class="fas fa-trophy"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge gold">National · FedEx</span>
+          <h4>Ranked 4th Nationally</h4>
+          <p>TGELF International Trade Challenge by FedEx — top 4 position out of nationwide participants.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-gavel"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge blue">MUN · Multiple</span>
+          <h4>Best Delegate (4×) at MUN</h4>
+          <p>Best Delegate (4×), High Commendation (1), and Special Mention (2) at Model United Nations conferences.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-paint-brush"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge purple">Art · National</span>
+          <h4>Picasso Award of Excellence</h4>
+          <p>Creative Art School — National Painting Contest award for outstanding artistic achievement.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-medal"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge silver">International</span>
+          <h4>2nd Place — RIEDU Painting Contest</h4>
+          <p>Secured 2nd place in the RIEDU International Painting Contest, competing with participants across countries.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-calculator"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge blue">City Level</span>
+          <h4>2nd Rank — Brainvita Abacus</h4>
+          <p>Secured 2nd rank in the Brainvita Abacus City-Level Competition, demonstrating exceptional numerical aptitude.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-rocket"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge green">Samsung</span>
+          <h4>Solve for Tomorrow</h4>
+          <p>Selected as a participant in the prestigious Solve for Tomorrow competition by Samsung, focused on innovation and social impact.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-leaf"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge green">State Level</span>
+          <h4>State-Level Qualifier — Painting</h4>
+          <p>State-level qualifier in the Painting Competition by the Bureau of Energy Efficiency, representing environmental awareness through art.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-star"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge purple">Cultural</span>
+          <h4>High Commendation — Goonj Fest</h4>
+          <p>High Commendation at Goonj Online International Cultural Fest by Delhi Public School Gurgaon; also a Matheletics participant.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-image"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge blue">National Exhibition</span>
+          <h4>Exhibitor — Khula Aasmaan</h4>
+          <p>Selected as an Exhibitor at the prestigious Khula Aasmaan National Painting Competition for exceptional artwork.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-flag"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge gold">Civic</span>
+          <h4>Online Quiz on Bharat</h4>
+          <p>Participant in the Online Quiz on Bharat – Loktantra ki Janani, demonstrating civic awareness and national knowledge.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card reveal-card">
+        <div class="ach-icon"><i class="fas fa-award"></i></div>
+        <div class="ach-content">
+          <span class="ach-badge gold">1st Prize</span>
+          <h4>1st Prize — Shark Pals</h4>
+          <p>Won 1st Prize in the Shark Pals Competition by The Palace School, showcasing entrepreneurial thinking and presentation skills.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-    <h2 class="heading">Contact</h2>
-    <p>📞 7014326632</p>
-    <p>📧 dishita.agarwal25@iimb.ac.in</p>
+<!-- ── RESUME ──────────────────────────────────────────────── -->
+<section class="resume-section reveal-section" id="resume">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">My Resume</span>
+      <h2 class="section-title">Download My<br/><em>Full Resume</em></h2>
+      <p class="section-desc">Get a complete overview of my education, experience, skills, and achievements in a single document.</p>
+    </div>
+    <div class="resume-card reveal-card">
+      <div class="resume-preview">
+        <div class="resume-icon-wrap"><i class="fas fa-file-pdf"></i></div>
+        <div class="resume-meta">
+          <h3>Dishita Agarwal — Resume</h3>
+          <p>BBA Student · IIM Bangalore & Christ University · Finance · Research · Creative Arts</p>
+          <div class="resume-tags">
+            <span>Finance</span><span>Management</span><span>Research</span><span>Creative Arts</span><span>Leadership</span>
+          </div>
+        </div>
+      </div>
+      <div class="resume-actions">
+        <a href="Dishita_Agarwal_Resume.pdf" target="_blank" class="btn-primary resume-btn"><i class="fas fa-eye"></i> View Resume</a>
+        <a href="Dishita_Agarwal_Resume.pdf" download class="btn-outline resume-btn"><i class="fas fa-download"></i> Download PDF</a>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ── CONTACT ─────────────────────────────────────────────── -->
+<section class="contact-section reveal-section" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact<br/><em>Dishita Agarwal</em></h2>
+      <p class="section-desc">Feel free to reach out for opportunities, collaborations, or just a conversation.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal-card">
+        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="contact-label">Phone</div>
+        <a href="tel:+917014326632" class="contact-value">+91 70143 26632</a>
+      </div>
+      <div class="contact-card reveal-card">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-label">Email</div>
+        <a href="mailto:dishita01092007@gmail.com" class="contact-value">dishita01092007@gmail.com</a>
+      </div>
+      <div class="contact-card reveal-card">
+        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+        <div class="contact-label">LinkedIn</div>
+        <a href="https://linkedin.com/in/dishita-agarwal-6772b3376" target="_blank" class="contact-value">dishita-agarwal-6772b3376</a>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <p>Open to internships, collaborations, and new opportunities.</p>
+      <a href="mailto:dishita01092007@gmail.com" class="btn-primary">Send a Message <i class="fas fa-paper-plane"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-initials">DA</div>
+      <div>
+        <div class="footer-title">Dishita Agarwal</div>
+        <div class="footer-sub">BBA · IIM Bangalore & Christ University · </div>
+      </div>
+    </div>
+    <div class="footer-copy">© 2026 Dishita Agarwal. All rights reserved.</div>
+  </div>
+</footer>
 
 <script>
-function showSection(id, event) {
-    let sections = document.querySelectorAll('.section');
-    let buttons = document.querySelectorAll('.navbar button');
+// ── LOADER ──
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('loader-hide');
+    setTimeout(() => loader.style.display = 'none', 600);
+  }, 2200);
+});
 
-    sections.forEach(sec => sec.classList.remove('active'));
-    buttons.forEach(btn => btn.classList.remove('active-btn'));
+// ── CURSOR ──
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
+});
+(function animRing() {
+  ringX += (mouseX - ringX) * 0.12; ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a,button,.achievement-card,.edu-card,.about-card,.timeline-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { ring.classList.add('cursor-hover'); dot.classList.add('cursor-hover'); });
+  el.addEventListener('mouseleave', () => { ring.classList.remove('cursor-hover'); dot.classList.remove('cursor-hover'); });
+});
 
-    document.getElementById(id).classList.add('active');
-    if(event) event.target.classList.add('active-btn');
+// ── THEME ──
+const toggleBtn = document.getElementById('themeToggle');
+const icon = document.getElementById('themeIcon');
+toggleBtn.addEventListener('click', () => {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+});
+
+// ── NAVBAR ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// ── ROLE ROTATOR ──
+const roles = ['Management Student','Finance Enthusiast','Creative Thinker','MUN Champion','Aspiring Leader','Passionate Painter','Commerce Graduate','Future Entrepreneur'];
+let roleIndex = 0, charIndex = 0, deleting = false;
+const roleEl = document.getElementById('roleText');
+function typeRole() {
+  const current = roles[roleIndex];
+  if (!deleting) {
+    roleEl.textContent = current.slice(0, ++charIndex);
+    if (charIndex === current.length) { deleting = true; setTimeout(typeRole, 1800); return; }
+  } else {
+    roleEl.textContent = current.slice(0, --charIndex);
+    if (charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+  }
+  setTimeout(typeRole, deleting ? 50 : 90);
 }
+typeRole();
 
-function toggleMode() {
-    document.body.classList.toggle("light-mode");
+// ── SCROLL REVEAL ──
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal-section, .reveal-card').forEach(el => io.observe(el));
+
+// ── PARTICLES ──
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+    this.r = Math.random() * 1.5 + 0.5;
+    this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4;
+    this.alpha = Math.random() * 0.5 + 0.1;
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+  }
+  draw() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = isDark ? `rgba(96,165,250,${this.alpha})` : `rgba(37,99,235,${this.alpha})`;
+    ctx.fill();
+  }
 }
-
-// typing animation
-let text = "Hi, I'm Dishita Agarwal";
-let i = 0;
-
-function typeEffect() {
-    if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, 70);
+for (let i = 0; i < 100; i++) particles.push(new Particle());
+function drawLines() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = isDark ? `rgba(96,165,250,${0.15*(1-dist/120)})` : `rgba(37,99,235,${0.1*(1-dist/120)})`;
+        ctx.lineWidth = 0.5; ctx.stroke();
+      }
     }
+  }
 }
-typeEffect();
+function animParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawLines();
+  requestAnimationFrame(animParticles);
+}
+animParticles();
 </script>
-
 </body>
 </html>
